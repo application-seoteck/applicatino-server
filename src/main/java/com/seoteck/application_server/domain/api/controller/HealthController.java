@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HealthController {
     @GetMapping("/actuator/health")
     public ResponseEntity showVersion() {
-        return ResponseEntity.ok().body("OK");
+        return ResponseEntity.ok().body("application UP");
     }
 }
