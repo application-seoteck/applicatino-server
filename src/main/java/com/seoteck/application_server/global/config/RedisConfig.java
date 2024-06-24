@@ -12,14 +12,21 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class RedisConfig {
 
-    @Value("${spring.data.redis.host}")
-    private String redisHost;
+    private final String redisHost;
 
-    @Value("${spring.data.redis.port}")
-    private int redisPort;
+    private final int redisPort;
 
-    @Value("${spring.data.redis.password}")
-    private String redisPassword;
+    private final String redisPassword;
+
+    public RedisConfig(
+        @Value("${spring.data.redis.host}") String redisHost,
+        @Value("${spring.data.redis.port}") int redisPort,
+        @Value("${spring.data.redis.password}") String redisPassword
+    ) {
+        this.redisHost = redisHost;
+        this.redisPort = redisPort;
+        this.redisPassword = redisPassword;
+    }
 
     @Bean
     public LettuceConnectionFactory redisConnectionFactory() {
